@@ -2,11 +2,84 @@
 
 import { useMemo, useState } from 'react'
 import Link from 'next/link'
-import { alerts } from '../../data/mockData'
 import { Icons } from '../icons'
 import { FeatureCard } from '../ui/FeatureCard'
 
 const content = {
+  fr: {
+    nav: ['Produit', 'Modules', 'Marché', 'V1 pilote'],
+    brandSub: 'SaaS multi-capteurs',
+    openDemo: 'Ouvrir la démo app',
+    badge: 'SaaS + IoT + IA pour la gestion intelligente des piscines',
+    heroTitle: 'La gestion intelligente des piscines, pilotée par la donnée multi-capteurs.',
+    heroSubtitle:
+      'Pool Link centralise la qualité de l’eau, la maintenance, les alertes, les interventions et la performance environnementale dans une plateforme SaaS conçue pour les propriétaires, les piscinistes et les opérateurs hôteliers.',
+    heroCta1: 'Voir la démo produit',
+    heroCta2: 'Demander un accès pilote',
+    stats: [
+      ['4M+', 'piscines en France'],
+      ['B2B/B2C', 'marché hybride'],
+      ['V1', 'prête pour pilotes'],
+    ],
+    previewTitle: 'Aperçu opérationnel en temps réel',
+    online: 'En ligne',
+    poolsMonitored: 'Piscines suivies',
+    activeAlerts: 'Alertes actives',
+    across: 'France / USA / Canada',
+    alertsHint: '12 prédictives, 4 critiques',
+    previewAlerts: [
+      'Vague de chaleur prévue dans 36h — le niveau de chlore doit être surveillé.',
+      'La piscine Villa Azure est prête à accueillir des baigneurs aujourd’hui.',
+    ],
+    marketKicker: 'Problème marché',
+    marketTitle: 'La gestion des piscines reste encore fragmentée.',
+    marketText:
+      'Carnets papier, échanges WhatsApp, photos dispersées et interventions non historisées créent un risque opérationnel. Pool Link transforme cette gestion dispersée en plateforme SaaS traçable, prédictive et commercialisable.',
+    audiences: [
+      ['Propriétaires', 'Vue santé simplifiée, alertes, Pool Passport et historique fiable.'],
+      ['Piscinistes', 'Dashboard portefeuille, interventions, rapports, stocks et opérations terrain.'],
+      ['Hôtellerie', 'Supervision multi-sites, rapports de conformité et standards opérationnels.'],
+    ],
+    modulesKicker: 'Modules clés',
+    modulesTitle: 'Une vision produit complète, livrée progressivement.',
+    modulesSub: 'Une couche opérationnelle premium pour les écosystèmes piscine résidentiels, professionnels et hôteliers.',
+    modules: [
+      ['Dashboard santé piscine', 'Vue en temps réel du pH, chlore, ORP, température, turbidité et niveau de baignabilité.'],
+      ['Alertes intelligentes', 'Alertes prédictives basées sur les mesures, les seuils et l’impact météo.'],
+      ['Pool Passport', 'Identité numérique permanente de la piscine, avec QR code, historique et rapport de transfert.'],
+      ['Eco-Score', 'Suivi de l’eau, de l’énergie et des produits chimiques avec recommandations actionnables.'],
+      ['Opérations piscinistes', 'Interventions, techniciens, rapports, checklists, photos et opérations terrain.'],
+      ['Données multi-capteurs', 'Architecture indépendante des fabricants, conçue pour les capteurs connectés et la normalisation des données.'],
+    ],
+    scopeKicker: 'Portée commerciale',
+    scopeTitle: 'Pensé pour un déploiement B2C, B2B et B2B2C.',
+    scopeText:
+      'Pool Link peut démarrer avec des clients pilotes, puis évoluer vers des abonnements, des outils piscinistes, des contrats hôteliers, une marketplace et une distribution en marque blanche.',
+    scopeList: [
+      'Propriétaires particuliers',
+      'Piscinistes professionnels',
+      'Hôtels & résidences',
+      'Fabricants & partenaires IoT',
+      'Gestionnaires multi-sites',
+      'Réseaux en marque blanche',
+    ],
+    roadmapTitle: 'Roadmap V1 pilote',
+    roadmapSub: 'Structure de livraison en deux étapes',
+    stepA: 'Étape A',
+    stepATitle: 'Prototype + V1 commercialisable',
+    stepAText:
+      'Démo, V1 SaaS, premiers modules piscinistes, base Pool Passport, Eco-Score V0, IA initiale et architecture multi-capteurs.',
+    stepB: 'Étape B',
+    stepBTitle: 'Industrialisation commerciale',
+    stepBText:
+      'Modules avancés, marketplace, marque blanche, internationalisation, plans SaaS et déploiement commercial.',
+    finalBadge: 'Stratégie produit prête pour pilotes',
+    finalTitle: 'Du prototype à la V1 commercialisable.',
+    finalText:
+      'Une plateforme SaaS premium qui relie intelligence capteurs, opérations terrain et exécution commerciale.',
+    finalCta: 'Ouvrir la démo SaaS',
+    backToTop: 'Retour en haut',
+  },
   en: {
     nav: ['Product', 'Modules', 'Market', 'Pilot V1'],
     brandSub: 'Multi-sensor SaaS',
@@ -20,20 +93,25 @@ const content = {
     stats: [
       ['4M+', 'pools in France'],
       ['B2B/B2C', 'hybrid market'],
-      ['V1', 'pilot ready'],
+      ['V1', 'ready for pilots'],
     ],
     previewTitle: 'Live Operations Snapshot',
+    online: 'Online',
     poolsMonitored: 'Pools monitored',
     activeAlerts: 'Active alerts',
-    across: 'Across FR / US / Canada',
+    across: 'France / US / Canada',
     alertsHint: '12 predictive, 4 critical',
+    previewAlerts: [
+      'Heat wave expected in 36h — chlorine levels should be monitored.',
+      'Villa Azure Pool is ready for swimmers today.',
+    ],
     marketKicker: 'Market problem',
     marketTitle: 'Pool operations are still fragmented.',
     marketText:
-      'Manual logs, WhatsApp messages, scattered photos and untracked interventions create operational risk. Pool Link transforms this into a traceable, predictive and commercial operating system.',
+      'Manual logs, WhatsApp messages, scattered photos and untracked interventions create operational risk. Pool Link turns this fragmented management into a traceable, predictive and market-ready SaaS platform.',
     audiences: [
-      ['Owners', 'Simple health view, alerts, Pool Passport and trusted service history.'],
-      ['Providers', 'Portfolio dashboard, interventions, reports, stocks and operations.'],
+      ['Owners', 'Simplified health view, alerts, Pool Passport and trusted service history.'],
+      ['Providers', 'Portfolio dashboard, interventions, reports, stocks and field operations.'],
       ['Hospitality', 'Multi-site supervision, compliance reports and operational standards.'],
     ],
     modulesKicker: 'Core modules',
@@ -48,9 +126,9 @@ const content = {
       ['Multi-Sensor Data', 'Hardware-agnostic architecture designed for connected sensors and normalized data.'],
     ],
     scopeKicker: 'Commercial scope',
-    scopeTitle: 'Built for B2C, B2B and B2B2C deployment.',
+    scopeTitle: 'Designed for B2C, B2B and B2B2C deployment.',
     scopeText:
-      'Pool Link scales from pilot customers to full subscription operations, provider ecosystems and white-label distribution.',
+      'Pool Link can start with pilot customers, then scale into subscriptions, provider tools, hospitality contracts, a marketplace and white-label distribution.',
     scopeList: [
       'Private owners',
       'Pool service providers',
@@ -63,107 +141,46 @@ const content = {
     roadmapSub: 'Two-step delivery structure',
     stepA: 'Step A',
     stepATitle: 'Prototype + marketable V1',
-    stepAText: 'Demo, SaaS V1, first provider modules, Pool Passport foundation, Eco-Score V0, initial AI and multi-sensor architecture.',
+    stepAText:
+      'Demo, SaaS V1, first provider modules, Pool Passport foundation, Eco-Score V0, initial AI and multi-sensor architecture.',
     stepB: 'Step B',
     stepBTitle: 'Commercial industrialization',
-    stepBText: 'Advanced modules, marketplace, white label, internationalization, SaaS plans and commercial deployment.',
+    stepBText:
+      'Advanced modules, marketplace, white label, internationalization, SaaS plans and commercial deployment.',
     finalBadge: 'Pilot-ready product strategy',
     finalTitle: 'From prototype to marketable V1.',
-    finalText: 'A premium SaaS platform bridging sensor intelligence, operations, and commercial execution.',
+    finalText:
+      'A premium SaaS platform that connects sensor intelligence, field operations and commercial execution.',
+    finalCta: 'Open SaaS demo',
     backToTop: 'Back to top',
-  },
-  fr: {
-    nav: ['Produit', 'Modules', 'Marché', 'Pilote V1'],
-    brandSub: 'SaaS multi-capteurs',
-    openDemo: "Ouvrir la démo app",
-    badge: 'SaaS + IoT + IA pour les opérations piscine intelligentes',
-    heroTitle: 'Gestion intelligente des piscines, pilotée par l’intelligence multi-capteurs.',
-    heroSubtitle:
-      'Pool Link centralise la qualité de l’eau, la maintenance, les alertes, les interventions et la performance environnementale dans une plateforme SaaS scalable pour propriétaires, professionnels de la piscine et opérateurs hôteliers.',
-    heroCta1: 'Voir la démo produit',
-    heroCta2: 'Demander un accès pilote',
-    stats: [
-      ['4M+', 'piscines en France'],
-      ['B2B/B2C', 'marché hybride'],
-      ['V1', 'pilote prêt'],
-    ],
-    previewTitle: 'Aperçu opérations live',
-    poolsMonitored: 'Piscines monitorées',
-    activeAlerts: 'Alertes actives',
-    across: 'FR / US / Canada',
-    alertsHint: '12 prédictives, 4 critiques',
-    marketKicker: 'Problème marché',
-    marketTitle: 'Les opérations piscine sont encore fragmentées.',
-    marketText:
-      'Logs manuels, messages WhatsApp, photos dispersées et interventions non tracées créent un risque opérationnel. Pool Link transforme cela en système traçable, prédictif et commercial.',
-    audiences: [
-      ['Propriétaires', 'Vue santé simple, alertes, Pool Passport et historique de service fiable.'],
-      ['Prestataires', 'Dashboard portefeuille, interventions, rapports, stocks et opérations.'],
-      ['Hôtellerie', 'Supervision multi-sites, rapports de conformité et standards opérationnels.'],
-    ],
-    modulesKicker: 'Modules clés',
-    modulesTitle: 'Une vision produit complète, livrée progressivement.',
-    modulesSub: 'Une couche opérationnelle premium pour les écosystèmes piscine résidentiels, pros et hospitality.',
-    modules: [
-      ['Dashboard santé piscine', 'Vue temps réel du pH, chlore, ORP, température, turbidité et swim-readiness.'],
-      ['Alertes intelligentes', 'Alertes prédictives basées sur les mesures, seuils et impact météo.'],
-      ['Pool Passport', 'Identité digitale permanente de la piscine, avec QR code, historique et rapport de transfert.'],
-      ['Eco-Score', 'Suivi de l’impact eau, énergie et chimie avec recommandations actionnables.'],
-      ['Opérations prestataires', 'Interventions, techniciens, rapports, checklists, photos et workflows terrain.'],
-      ['Données multi-capteurs', 'Architecture agnostique pour capteurs connectés et flux normalisés.'],
-    ],
-    scopeKicker: 'Portée commerciale',
-    scopeTitle: 'Conçu pour un déploiement B2C, B2B et B2B2C.',
-    scopeText:
-      'Pool Link passe des clients pilotes à des opérations d’abonnement complètes, écosystèmes prestataires et distribution en marque blanche.',
-    scopeList: [
-      'Propriétaires privés',
-      'Sociétés de maintenance piscine',
-      'Hôtels & résidences',
-      'Fabricants & partenaires IoT',
-      'Opérateurs multi-sites',
-      'Réseaux marque blanche',
-    ],
-    roadmapTitle: 'Roadmap Pilote V1',
-    roadmapSub: 'Structure de livraison en deux étapes',
-    stepA: 'Étape A',
-    stepATitle: 'Prototype + V1 commercialisable',
-    stepAText: 'Démo, SaaS V1, premiers modules prestataires, base Pool Passport, Eco-Score V0, architecture IA et multi-capteurs initiale.',
-    stepB: 'Étape B',
-    stepBTitle: 'Industrialisation commerciale',
-    stepBText: 'Modules avancés, marketplace, marque blanche, internationalisation, plans SaaS et déploiement commercial.',
-    finalBadge: 'Stratégie produit prête pour pilote',
-    finalTitle: 'Du prototype à une V1 commercialisable.',
-    finalText: 'Une plateforme SaaS premium qui connecte intelligence capteurs, opérations et exécution commerciale.',
-    backToTop: 'Retour en haut',
   },
 }
 
 function HeroPreviewPanel({ t }) {
   return (
-    <div className="relative -mt-4 overflow-hidden rounded-[1.9rem] border border-white/35 bg-white/14 p-4 shadow-[0_35px_70px_-35px_rgba(3,16,38,0.9)] backdrop-blur-xl md:p-6 lg:mt-16">
+    <div className="relative -mt-4 overflow-hidden rounded-[1.9rem] border border-white/45 bg-white/18 p-4 shadow-[0_38px_80px_-34px_rgba(2,16,38,0.9)] backdrop-blur-xl md:p-6 lg:mt-16">
       <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-cyan-300/30 blur-2xl" />
       <div className="mb-4 flex items-center justify-between border-b border-white/25 pb-4">
         <div>
           <div className="text-[11px] font-black uppercase tracking-[0.2em] text-cyan-100">Pool Link OS</div>
           <div className="mt-1 text-lg font-black text-white">{t.previewTitle}</div>
         </div>
-        <span className="rounded-full bg-emerald-400/20 px-3 py-1 text-xs font-bold text-emerald-100 ring-1 ring-emerald-300/40">Online</span>
+        <span className="rounded-full bg-emerald-400/20 px-3 py-1 text-xs font-bold text-emerald-100 ring-1 ring-emerald-300/40">{t.online}</span>
       </div>
       <div className="grid gap-3 md:grid-cols-2">
-        <div className="rounded-2xl bg-slate-950/55 p-4 ring-1 ring-white/20">
+        <div className="rounded-2xl bg-slate-950/62 p-4 ring-1 ring-white/22">
           <div className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-100/80">{t.poolsMonitored}</div>
           <div className="mt-2 text-3xl font-black text-white">428</div>
           <div className="mt-1 text-xs text-cyan-50/80">{t.across}</div>
         </div>
-        <div className="rounded-2xl bg-slate-950/55 p-4 ring-1 ring-white/20">
+        <div className="rounded-2xl bg-slate-950/62 p-4 ring-1 ring-white/22">
           <div className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-100/80">{t.activeAlerts}</div>
           <div className="mt-2 text-3xl font-black text-white">37</div>
           <div className="mt-1 text-xs text-cyan-50/80">{t.alertsHint}</div>
         </div>
       </div>
       <div className="mt-4 space-y-2">
-        {alerts.slice(0, 2).map((alert) => (
+        {t.previewAlerts.map((alert) => (
           <div key={alert} className="rounded-xl bg-white/10 p-3 text-xs font-semibold text-cyan-50 ring-1 ring-white/20">
             <Icons.alert className="mr-2 inline-flex text-amber-300" size={14} />
             {alert}
@@ -180,10 +197,7 @@ export function LandingPage() {
   const t = content[lang]
 
   const audienceIcons = useMemo(() => [Icons.shield, Icons.chart, Icons.map], [])
-  const moduleIcons = useMemo(
-    () => [Icons.gauge, Icons.alert, Icons.qr, Icons.leaf, Icons.calendar, Icons.radar],
-    []
-  )
+  const moduleIcons = useMemo(() => [Icons.gauge, Icons.alert, Icons.qr, Icons.leaf, Icons.calendar, Icons.radar], [])
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#e6f7ff] via-[#f4fbff] to-white text-slate-950">
@@ -192,15 +206,15 @@ export function LandingPage() {
         className="relative isolate overflow-hidden"
         style={{
           backgroundImage:
-            'linear-gradient(112deg, rgba(3,20,43,0.84) 8%, rgba(7,46,79,0.55) 42%, rgba(6,21,43,0.72) 100%), radial-gradient(circle at 78% 10%, rgba(93,230,255,0.32), transparent 42%), url(/images/pool-hero.png)',
+            'linear-gradient(115deg, rgba(8,24,43,0.9) 6%, rgba(15,39,64,0.74) 44%, rgba(11,31,51,0.84) 100%), radial-gradient(circle at 80% 14%, rgba(34,211,238,0.24), transparent 46%), radial-gradient(circle at 18% 78%, rgba(6,182,212,0.18), transparent 42%), url(/images/pool-hero.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_24%_78%,rgba(56,189,248,0.2),transparent_38%)]" />
-        <div className="absolute -bottom-40 left-[-8rem] h-96 w-96 rounded-full bg-cyan-300/20 blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_8%,rgba(103,232,249,0.14),transparent_38%)]" />
+        <div className="absolute -bottom-40 left-[-8rem] h-96 w-96 rounded-full bg-cyan-300/16 blur-3xl" />
 
-        <header className="sticky top-0 z-50 border-b border-white/15 bg-slate-950/25 backdrop-blur-2xl">
+        <header className="sticky top-0 z-50 border-b border-white/20 bg-[#0b1f33]/40 backdrop-blur-2xl">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
             <Link href="/" className="group flex items-center gap-3">
               <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 text-cyan-200 ring-1 ring-white/30 transition group-hover:bg-white/20">
@@ -220,8 +234,8 @@ export function LandingPage() {
             </nav>
             <div className="hidden items-center gap-3 md:flex">
               <div className="flex items-center overflow-hidden rounded-full border border-white/30 bg-white/10 p-1 text-xs font-black text-white">
-                <button onClick={() => setLang('en')} className={`rounded-full px-3 py-1 ${lang === 'en' ? 'bg-white text-slate-950' : 'text-white'}`}>EN</button>
                 <button onClick={() => setLang('fr')} className={`rounded-full px-3 py-1 ${lang === 'fr' ? 'bg-white text-slate-950' : 'text-white'}`}>FR</button>
+                <button onClick={() => setLang('en')} className={`rounded-full px-3 py-1 ${lang === 'en' ? 'bg-white text-slate-950' : 'text-white'}`}>EN</button>
               </div>
               <Link
                 href="/app"
@@ -237,8 +251,8 @@ export function LandingPage() {
           {mobileOpen && (
             <div className="space-y-3 border-t border-white/10 bg-slate-950/85 p-5 md:hidden">
               <div className="flex items-center justify-center overflow-hidden rounded-full border border-white/30 bg-white/10 p-1 text-xs font-black text-white">
-                <button onClick={() => setLang('en')} className={`rounded-full px-3 py-1 ${lang === 'en' ? 'bg-white text-slate-950' : 'text-white'}`}>EN</button>
                 <button onClick={() => setLang('fr')} className={`rounded-full px-3 py-1 ${lang === 'fr' ? 'bg-white text-slate-950' : 'text-white'}`}>FR</button>
+                <button onClick={() => setLang('en')} className={`rounded-full px-3 py-1 ${lang === 'en' ? 'bg-white text-slate-950' : 'text-white'}`}>EN</button>
               </div>
               <Link href="/app" className="block w-full rounded-full bg-cyan-300 px-5 py-3 text-center font-black text-slate-950">
                 {t.openDemo}
@@ -253,7 +267,7 @@ export function LandingPage() {
               <Icons.check size={18} /> {t.badge}
             </div>
             <h1 className="max-w-4xl text-5xl font-black leading-[0.92] tracking-tight text-white md:text-7xl">{t.heroTitle}</h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-cyan-50/95 md:text-xl">{t.heroSubtitle}</p>
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-100/95 md:text-xl">{t.heroSubtitle}</p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/app"
@@ -377,7 +391,7 @@ export function LandingPage() {
               <p className="mt-5 max-w-2xl text-lg leading-8 text-cyan-50/95">{t.finalText}</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link href="/app" className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-black text-slate-950 shadow-lg shadow-black/15">
-                  {t.openDemo} <Icons.arrow size={18} />
+                  {t.finalCta} <Icons.arrow size={18} />
                 </Link>
                 <a href="#product" className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-950/35 px-7 py-4 font-bold text-white ring-1 ring-white/25">
                   {t.backToTop}
