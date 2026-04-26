@@ -8,24 +8,25 @@ import { FeatureCard } from '../ui/FeatureCard'
 
 function HeroPreviewPanel() {
   return (
-    <div className="relative overflow-hidden rounded-[1.75rem] border border-white/20 bg-white/12 p-4 shadow-2xl shadow-cyan-950/35 backdrop-blur-xl md:p-6">
-      <div className="mb-4 flex items-center justify-between border-b border-white/20 pb-4">
+    <div className="relative -mt-4 overflow-hidden rounded-[1.9rem] border border-white/35 bg-white/14 p-4 shadow-[0_35px_70px_-35px_rgba(3,16,38,0.9)] backdrop-blur-xl md:p-6 lg:mt-16">
+      <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-cyan-300/30 blur-2xl" />
+      <div className="mb-4 flex items-center justify-between border-b border-white/25 pb-4">
         <div>
-          <div className="text-[11px] font-black uppercase tracking-[0.2em] text-cyan-200">Pool Link OS</div>
+          <div className="text-[11px] font-black uppercase tracking-[0.2em] text-cyan-100">Pool Link OS</div>
           <div className="mt-1 text-lg font-black text-white">Live Operations Snapshot</div>
         </div>
         <span className="rounded-full bg-emerald-400/20 px-3 py-1 text-xs font-bold text-emerald-100 ring-1 ring-emerald-300/40">Online</span>
       </div>
       <div className="grid gap-3 md:grid-cols-2">
-        <div className="rounded-2xl bg-slate-950/45 p-4 ring-1 ring-white/20">
+        <div className="rounded-2xl bg-slate-950/55 p-4 ring-1 ring-white/20">
           <div className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-100/80">Pools monitored</div>
           <div className="mt-2 text-3xl font-black text-white">428</div>
-          <div className="mt-1 text-xs text-cyan-50/75">Across FR / US / Canada</div>
+          <div className="mt-1 text-xs text-cyan-50/80">Across FR / US / Canada</div>
         </div>
-        <div className="rounded-2xl bg-slate-950/45 p-4 ring-1 ring-white/20">
+        <div className="rounded-2xl bg-slate-950/55 p-4 ring-1 ring-white/20">
           <div className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-100/80">Active alerts</div>
           <div className="mt-2 text-3xl font-black text-white">37</div>
-          <div className="mt-1 text-xs text-cyan-50/75">12 predictive, 4 critical</div>
+          <div className="mt-1 text-xs text-cyan-50/80">12 predictive, 4 critical</div>
         </div>
       </div>
       <div className="mt-4 space-y-2">
@@ -45,24 +46,24 @@ export function LandingPage() {
   const nav = useMemo(() => ['Product', 'Modules', 'Market', 'Pilot V1'], [])
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-950 to-[#f3fbff] text-slate-950">
+    <div className="min-h-screen bg-gradient-to-b from-[#e6f7ff] via-[#f4fbff] to-white text-slate-950">
       <section
         id="product"
         className="relative isolate overflow-hidden"
         style={{
           backgroundImage:
-            'linear-gradient(110deg, rgba(2,12,30,0.9) 10%, rgba(2,29,58,0.68) 42%, rgba(2,12,30,0.82) 100%), url(/images/pool-hero.png)',
+            'linear-gradient(112deg, rgba(3,20,43,0.84) 8%, rgba(7,46,79,0.55) 42%, rgba(6,21,43,0.72) 100%), radial-gradient(circle at 78% 10%, rgba(93,230,255,0.32), transparent 42%), url(/images/pool-hero.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_16%,rgba(103,232,249,0.24),transparent_46%)]" />
-        <div className="absolute -bottom-40 left-[-10rem] h-96 w-96 rounded-full bg-cyan-300/20 blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_24%_78%,rgba(56,189,248,0.2),transparent_38%)]" />
+        <div className="absolute -bottom-40 left-[-8rem] h-96 w-96 rounded-full bg-cyan-300/20 blur-3xl" />
 
-        <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/35 backdrop-blur-xl">
+        <header className="sticky top-0 z-50 border-b border-white/15 bg-slate-950/25 backdrop-blur-2xl">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
             <Link href="/" className="group flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 text-cyan-200 ring-1 ring-white/20 transition group-hover:bg-white/20">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 text-cyan-200 ring-1 ring-white/30 transition group-hover:bg-white/20">
                 <Icons.waves />
               </div>
               <div className="text-left">
@@ -70,7 +71,7 @@ export function LandingPage() {
                 <div className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-200">Multi-sensor SaaS</div>
               </div>
             </Link>
-            <nav className="hidden items-center gap-8 text-sm font-bold text-cyan-50/85 md:flex">
+            <nav className="hidden items-center gap-8 text-sm font-bold text-cyan-50/90 md:flex">
               {nav.map((item) => (
                 <a key={item} href={`#${item.toLowerCase().replaceAll(' ', '-')}`} className="transition hover:text-white">
                   {item}
@@ -80,7 +81,7 @@ export function LandingPage() {
             <div className="hidden items-center gap-3 md:flex">
               <Link
                 href="/app"
-                className="rounded-full bg-gradient-to-r from-cyan-400 to-sky-300 px-5 py-2.5 text-sm font-black text-slate-950 shadow-lg shadow-cyan-500/30 transition hover:scale-[1.02]"
+                className="rounded-full bg-gradient-to-r from-cyan-300 via-sky-300 to-cyan-200 px-5 py-2.5 text-sm font-black text-slate-950 shadow-lg shadow-cyan-500/30 transition hover:scale-[1.02]"
               >
                 Open app demo
               </Link>
@@ -98,28 +99,28 @@ export function LandingPage() {
           )}
         </header>
 
-        <div className="relative mx-auto grid min-h-[88vh] max-w-7xl items-center gap-14 px-5 pb-16 pt-16 lg:grid-cols-[1fr_0.95fr] lg:pt-20">
+        <div className="relative mx-auto grid min-h-[90vh] max-w-7xl items-center gap-12 px-5 pb-20 pt-16 lg:grid-cols-[1.02fr_0.88fr] lg:pt-20">
           <div>
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-200/30 bg-white/10 px-4 py-2 text-sm font-bold text-cyan-100 backdrop-blur">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-100/35 bg-white/10 px-4 py-2 text-sm font-bold text-cyan-100 backdrop-blur">
               <Icons.check size={18} /> SaaS + IoT + AI for smart pool operations
             </div>
             <h1 className="max-w-4xl text-5xl font-black leading-[0.92] tracking-tight text-white md:text-7xl">
               Smart pool management, powered by multi-sensor intelligence.
             </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-cyan-50/90 md:text-xl">
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-cyan-50/95 md:text-xl">
               Pool Link centralizes water quality, maintenance, alerts, interventions and environmental performance in one
               scalable SaaS platform for owners, pool professionals and hospitality operators.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/app"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-sky-300 px-7 py-4 font-black text-slate-950 shadow-xl shadow-cyan-500/35 transition hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-300 via-sky-300 to-cyan-200 px-7 py-4 font-black text-slate-950 shadow-xl shadow-cyan-500/35 transition hover:-translate-y-0.5"
               >
                 View product demo <Icons.arrow size={18} />
               </Link>
               <a
                 href="#pilot-v1"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-white/10 px-7 py-4 font-bold text-white ring-1 ring-white/30 backdrop-blur transition hover:bg-white/20"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-white/12 px-7 py-4 font-bold text-white ring-1 ring-white/35 backdrop-blur transition hover:bg-white/20"
               >
                 Request pilot access
               </a>
@@ -130,22 +131,24 @@ export function LandingPage() {
                 ['B2B/B2C', 'hybrid market'],
                 ['V1', 'pilot ready'],
               ].map(([value, label]) => (
-                <div key={label} className="rounded-2xl border border-white/20 bg-slate-950/35 p-4 shadow-lg backdrop-blur-md">
+                <div key={label} className="rounded-2xl border border-white/25 bg-slate-950/38 p-4 shadow-lg backdrop-blur-md">
                   <div className="text-2xl font-black text-white">{value}</div>
-                  <div className="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-cyan-100/85">{label}</div>
+                  <div className="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-cyan-100/90">{label}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="lg:pl-8">
+          <div className="max-w-xl justify-self-end lg:max-w-none lg:pl-6">
             <HeroPreviewPanel />
           </div>
         </div>
+
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-b from-transparent to-[#f4fbff]" />
       </section>
 
-      <section className="px-5 py-12 md:py-20">
-        <div className="mx-auto max-w-7xl rounded-[2.25rem] border border-white/10 bg-gradient-to-br from-slate-900 via-[#061b36] to-slate-900 p-8 shadow-2xl shadow-cyan-950/35 md:p-12">
+      <section className="px-5 py-14 md:py-22">
+        <div className="mx-auto max-w-7xl rounded-[2.25rem] border border-white/10 bg-gradient-to-br from-slate-900 via-[#0a2748] to-slate-900 p-8 shadow-2xl shadow-cyan-950/30 md:p-12">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
             <div>
               <div className="mb-4 text-sm font-bold uppercase tracking-[0.22em] text-cyan-300">Market problem</div>
@@ -161,7 +164,7 @@ export function LandingPage() {
                 [Icons.chart, 'Providers', 'Portfolio dashboard, interventions, reports, stocks and operations.'],
                 [Icons.map, 'Hospitality', 'Multi-site supervision, compliance reports and operational standards.'],
               ].map(([Icon, title, detail]) => (
-                <div key={title} className="rounded-3xl border border-white/15 bg-white/10 p-5 ring-1 ring-white/10 backdrop-blur-sm">
+                <div key={title} className="rounded-3xl border border-white/20 bg-white/10 p-5 ring-1 ring-white/10 backdrop-blur-sm">
                   <Icon className="mb-4 text-cyan-300" size={28} />
                   <h4 className="font-black text-white">{title}</h4>
                   <p className="mt-2 text-sm leading-6 text-slate-200/85">{detail}</p>
@@ -172,7 +175,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section id="modules" className="px-5 py-16 md:py-24">
+      <section id="modules" className="bg-gradient-to-b from-[#f4fbff] to-white px-5 py-18 md:py-24">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-4 text-sm font-bold uppercase tracking-[0.22em] text-cyan-700">Core modules</div>
@@ -190,7 +193,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section id="market" className="px-5 py-16 md:py-24">
+      <section id="market" className="bg-gradient-to-b from-white to-[#f6fcff] px-5 py-16 md:py-24">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
             <div className="mb-4 text-sm font-bold uppercase tracking-[0.22em] text-cyan-700">Commercial scope</div>
@@ -238,8 +241,8 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section id="pilot-v1" className="px-5 pb-20 pt-8 md:pb-28">
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#0a3155] via-cyan-700 to-slate-950 p-8 text-white shadow-2xl shadow-cyan-950/30 md:p-14">
+      <section id="pilot-v1" className="px-5 pb-20 pt-10 md:pb-28">
+        <div className="mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#0b3357] via-cyan-700 to-slate-950 p-8 text-white shadow-2xl shadow-cyan-950/30 md:p-14">
           <div className="grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-center">
             <div>
               <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-bold ring-1 ring-white/20">
